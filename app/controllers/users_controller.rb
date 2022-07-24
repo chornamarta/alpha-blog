@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = 'Welcome to AlphaBlog!Tou successfully sign up!'
+      flash[:notice] = "Welcome #{@user.username}to AlphaBlog!Tou successfully sign up!"
       redirect_to articles_path
     else
       render 'new'
