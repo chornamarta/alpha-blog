@@ -38,10 +38,10 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @article.destroy
-  #   redirect_to articles_path
-  # end
+  def destroy
+    @article.destroy
+    redirect_to articles_path
+  end
 
 
   private
@@ -54,7 +54,7 @@ class ArticlesController < ApplicationController
   end
 
   def require_same_user
-    if current_user != @article.user
+    if current_user != @article.user  && !current_user.admin?
       flash[:alert] = "You can`t edit or delete this article"
       redirect_to @article
     end
